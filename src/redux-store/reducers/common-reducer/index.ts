@@ -1,21 +1,24 @@
 import { ILoadingStatus } from '../../../types/team-page';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { SLICES_NAMES } from '../../../utils/objects';
-import { AxiosError } from 'axios';
+import { AuthorizationStatus, SLICES_NAMES } from '../../../utils/objects';
 
 const initialState =
 {
-  results: [],
+  authorization_status: AuthorizationStatus.Unknown,
+  error: null,
   loading_status: ILoadingStatus.idle
 }
 
-
-const callsReducer = createSlice({
+const commonReducer = createSlice({
   name: SLICES_NAMES.TEAM,
   initialState,
   reducers: {
     setLoadingState(state, action: PayloadAction<ILoadingStatus>) {
       state.loading_status = action.payload
+    },
+
+    setErrorNull(state, _) {
+      state.error = null
     },
 
   },
@@ -25,6 +28,6 @@ const callsReducer = createSlice({
   },
 });
 
-export const { setLoadingState } = callsReducer.actions;
+export const { setLoadingState, setErrorNull } = commonReducer.actions;
 
-export default callsReducer.reducer
+export default commonReducer.reducer

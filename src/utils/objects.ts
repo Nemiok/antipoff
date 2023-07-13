@@ -7,11 +7,22 @@ export const SLICES_NAMES = {
 } as const
 
 export const PAGE_ROUTES = {
-  TEAM: 'team',
+  TEAM: '/team',
+  LOGIN: '/login'
+} as const
 
+export const API_ROUTES = {
+  LOGIN: 'login',
+  USERS: 'users'
 } as const
 
 export const LOADING_STATUS = {
   LOADING: 'LOADING',
   IDLE: 'IDLE'
+}
+
+export const enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
 }
