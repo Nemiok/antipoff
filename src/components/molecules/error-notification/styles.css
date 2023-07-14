@@ -1,0 +1,15 @@
+.ErrorNotification__Container {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--error-text-color);
+  color: var(--error-text-color);
+  background-color: var(--error-background-color);
+  width: 100%;
+}
+
+.ErrorNotification__List {
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+  gap: 8px;
+}

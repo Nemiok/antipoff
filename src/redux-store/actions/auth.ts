@@ -13,10 +13,10 @@ export const loginAction = createAsyncThunk<
     dispatch: AppDispatchType;
     state: StateType;
     extra: IThunkExtraField;
-  }>('user/logIn', async (loginInfo, { extra: { coreAPI } }) => {
+  }>('user/logIn', async ({ email, password }, { extra: { coreAPI } }) => {
     const { data } = await coreAPI.post<ILoginResponse>(API_ROUTES.LOGIN, {
-      login: loginInfo.email,
-      password: loginInfo.password
+      email,
+      password
     })
 
     if (data?.error) {
@@ -36,10 +36,10 @@ export const registrationAction = createAsyncThunk<
     dispatch: AppDispatchType;
     state: StateType;
     extra: IThunkExtraField;
-  }>('user/logIn', async (loginInfo, { extra: { coreAPI } }) => {
-    const { data } = await coreAPI.post<IRegistrationResponse>(API_ROUTES.LOGIN, {
-      login: loginInfo.email,
-      password: loginInfo.password
+  }>('user/register', async ({ email, password }, { extra: { coreAPI } }) => {
+    const { data } = await coreAPI.post<IRegistrationResponse>(API_ROUTES.REGISTER, {
+      email,
+      password
     })
 
     if (data?.error) {

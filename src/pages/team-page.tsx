@@ -10,7 +10,7 @@ const TeamPage = () => {
     }, []) */
 
   return (
-    <div>hello</div>
+    <article>hello</article>
   )
 }
 

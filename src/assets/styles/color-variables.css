@@ -1,1 +1,12 @@
-html {}
+html {
+  --background-color-1: #512689;
+  --background-color-2: #FFF;
+  --background-color-3: #F8F8F8;
+  --error-background-color: rgba(255, 97, 97, 0.1);
+
+  --text-color-1: #151317;
+  --text-color-2: #808185;
+  --error-text-color: #FF6161;
+
+  --accent-color-1: #FF6161;
+}

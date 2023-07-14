@@ -8,17 +8,19 @@ export const SLICES_NAMES = {
 
 export const PAGE_ROUTES = {
   TEAM: '/team',
-  LOGIN: '/login'
+  LOGIN: '/login',
+  REGISTRATION: '/registration'
 } as const
 
 export const API_ROUTES = {
   LOGIN: 'login',
-  USERS: 'users'
+  USERS: 'users',
+  REGISTER: 'register'
 } as const
 
-export const LOADING_STATUS = {
-  LOADING: 'LOADING',
-  IDLE: 'IDLE'
+export enum LoadingStatus {
+  loading = 'loading',
+  idle = 'idle'
 }
 
 export const enum AuthorizationStatus {

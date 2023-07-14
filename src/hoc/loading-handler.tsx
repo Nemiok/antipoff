@@ -1,4 +1,4 @@
-import Loader from '../components/loader'
+import Loader from '../components/molecules/loader'
 import React, { ReactNode } from 'react'
 import { useAppSelector } from '../redux-store/hooks'
 import { getPageLoadingStatus } from '../redux-store/reducers/team-page-reducer/selectors'
