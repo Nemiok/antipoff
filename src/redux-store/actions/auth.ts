@@ -23,7 +23,6 @@ export const loginAction = createAsyncThunk<
       throw new Error(data.error)
     }
 
-    console.log(data)
     saveToken(data.token)
     return data
   })
@@ -46,7 +45,6 @@ export const registrationAction = createAsyncThunk<
       throw new Error(data.error)
     }
 
-    console.log(data)
     saveToken(data.token)
     return data
   })

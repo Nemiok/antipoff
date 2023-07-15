@@ -13,7 +13,7 @@ const commonReducer = createSlice({
   name: 'APP',
   initialState,
   reducers: {
-    setLoadingState(state, action: PayloadAction<LoadingStatus>) {
+    setAppLoadingState(state, action: PayloadAction<LoadingStatus>) {
       state.loading_status = action.payload
     },
 
@@ -26,7 +26,7 @@ const commonReducer = createSlice({
       state.error = state.error.concat(action.payload)
     },
 
-    setAuthorizationStatus: (state, action) => {
+    setAuthorizationStatus: (state, action: PayloadAction<AuthorizationStatus>) => {
       state.authorization_status = action.payload
     }
 
@@ -65,6 +65,6 @@ const commonReducer = createSlice({
   },
 });
 
-export const { setLoadingState, setErrorNull, setError, setAuthorizationStatus } = commonReducer.actions;
+export const { setAppLoadingState, setErrorNull, setError, setAuthorizationStatus } = commonReducer.actions;
 
 export default commonReducer.reducer

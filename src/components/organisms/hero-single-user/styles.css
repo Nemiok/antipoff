@@ -1,0 +1,46 @@
+.HeroSingleUser__Container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 188px;
+  background-color: var(--background-color-1);
+  color: var(--background-color-2);
+  padding-bottom: 64px;
+  font-family: 'Roboto';
+  gap: 32px;
+}
+
+.HeroSingleUser__Avatar {
+  border-radius: 50%;
+}
+
+.HeroSingleUser__Title {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.HeroSingleUser__Paragraph {
+  max-width: 846px;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .HeroSingleUser__Container {
+    align-items: center;
+    flex-direction: column-reverse;
+    padding: 0 62px;
+    gap: 16px;
+    padding-bottom: 64px;
+  }
+
+
+  .HeroSingleUser__Title {
+    font-size: 36px;
+  }
+
+  .HeroSingleUser__Paragraph {
+    font-size: 16px;
+    text-align: center;
+  }
+}

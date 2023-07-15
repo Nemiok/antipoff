@@ -7,6 +7,7 @@ import LoginPage from "./pages/login-page";
 
 const TeamPage = lazy(() => import('./pages/team-page'));
 const RegistrationPage = lazy(() => import('./pages/registration-page'));
+const UserPage = lazy(() => import('./pages/user-page'));
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
@@ -22,6 +23,12 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route element={<RegistrationPage />} path={PAGE_ROUTES.REGISTRATION} />
 
     <Route index element={<Navigate to={PAGE_ROUTES.TEAM} />} />
+
+    <Route element={<UserPage />} path={`${PAGE_ROUTES.TEAM}/:userID`} />
+
+
+
+
 
   </Route>
 ))

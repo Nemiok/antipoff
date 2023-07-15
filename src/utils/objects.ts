@@ -1,5 +1,6 @@
 export const PAGES_NAMES = {
-  TEAM_PAGE: 'TEAM_PAGE'
+  TEAM_PAGE: 'TEAM_PAGE',
+  SINGLE_USER_PAGE: 'SINGLE_USER_PAGE'
 } as const
 
 export const SLICES_NAMES = {

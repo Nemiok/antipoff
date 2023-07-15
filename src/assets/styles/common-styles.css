@@ -22,3 +22,14 @@ article {
   align-items: center;
   justify-content: center;
 }
+
+.TeamPage__MembersSection {
+  padding: 48px 80px 70px 80px;
+
+}
+
+@media (max-width: 768px) {
+  .TeamPage__MembersSection {
+    padding: 32px;
+  }
+}

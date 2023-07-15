@@ -1,0 +1,42 @@
+@media (min-width: 769px) {
+  .BackButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid var(--background-color-3);
+    color: var(--background-color-3);
+    font-family: 'Roboto';
+    font-size: 16px;
+    line-height: 21.8px;
+    border-radius: 8px;
+    transition-property: color, background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .BackButton:hover,
+  .BackButton:focus {
+    background-color: var(--background-color-3);
+    color: var(--text-color-1);
+  }
+}
+
+@media (max-width: 768px) {
+  .BackButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+  }
+
+  .BackButton:hover,
+  .BackButton:focus {
+    background-color: none;
+    color: none;
+  }
+
+}

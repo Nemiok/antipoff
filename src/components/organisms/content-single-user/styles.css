@@ -1,0 +1,46 @@
+.ContentSingleUser__Container {
+  display: flex;
+  gap: 130px;
+  padding: 50px 188px;
+  color: var(--text-color-1);
+  font-family: 'Roboto';
+  line-height: 21.8px;
+}
+
+.ContentSingleUser__Contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ContentSingleUser__Paragraph p:not(:last-of-type) {
+  margin-bottom: 24px;
+}
+
+.ContentSingleUser__Contacts a {
+  color: var(--text-color-1);
+  transition: color .1s ease-in-out;
+}
+
+.ContentSingleUser__Contacts a:hover {
+  color: var(--background-color-1);
+}
+
+.ContentSingleUser__Contact {
+  display: flex;
+  gap: 8px;
+}
+
+.ContentSingleUser__Contact svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 1024px) {
+  .ContentSingleUser__Container {
+    flex-direction: column-reverse;
+    padding: 33px 16px;
+    gap: 34px;
+  }
+}

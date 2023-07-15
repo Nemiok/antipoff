@@ -1,20 +1,36 @@
 import Loader from '../components/molecules/loader'
 import React, { ReactNode } from 'react'
 import { useAppSelector } from '../redux-store/hooks'
-import { getPageLoadingStatus } from '../redux-store/reducers/team-page-reducer/selectors'
-import { ILoadingStatus } from '../types/team-page'
+import { getTeamPageLoadingStatus } from '../redux-store/reducers/team-page-reducer/selectors'
+import { LoadingStatus, PAGES_NAMES } from '../utils/objects'
+import { getSinglePageLoadingStatus } from '../redux-store/reducers/single-user-reducer/selectors'
 
 interface ILoadingHandlerProps {
+  currentPage: string,
   children: ReactNode
 }
 
-const LoadingHandler = ({ children }: ILoadingHandlerProps) => {
-  const calls_page_loading_status = useAppSelector(getPageLoadingStatus)
+const LoadingHandler = ({ currentPage, children }: ILoadingHandlerProps) => {
 
-  if (calls_page_loading_status === ILoadingStatus.loading) {
-    return <Loader />
+  let loadingStatus
+
+  switch (currentPage) {
+    case PAGES_NAMES.TEAM_PAGE: {
+      loadingStatus = useAppSelector(getTeamPageLoadingStatus)
+      console.log(loadingStatus, 'members')
+      break
+    }
+    case PAGES_NAMES.SINGLE_USER_PAGE: {
+      loadingStatus = useAppSelector(getSinglePageLoadingStatus)
+      console.log(loadingStatus, 'user')
+      break
+    }
+    default: loadingStatus = 'idle'
   }
 
+  if (loadingStatus === LoadingStatus.loading) {
+    return <Loader />
+  }
   return (
     <>
       {children}
