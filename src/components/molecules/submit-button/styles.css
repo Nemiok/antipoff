@@ -1,0 +1,24 @@
+.SubmitButton {
+  padding: 8px 12px;
+  width: 100%;
+  color: var(--background-color-2);
+  background-color: var(--background-color-1);
+  font-size: 16px;
+  line-height: 136.187%;
+  border-radius: 8px;
+  transition: filter 0.1s ease-in-out;
+}
+
+.SubmitButton:disabled {
+  filter: invert(1);
+  pointer-events: none;
+}
+
+.SubmitButton:hover,
+.SubmitButton:focus-visible {
+  filter: invert(1) contrast(130%);
+}
+
+.SubmitButton:active {
+  filter: invert(0.9);
+}

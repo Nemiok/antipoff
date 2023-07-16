@@ -4,14 +4,19 @@ import { useAppDispatch, useAppSelector } from '../../../redux-store/hooks'
 import { registrationAction } from '../../../redux-store/actions/auth'
 import isValidEmail from '../../../utils/functions/validate-email'
 import { getAuthorizationStatus, getErrorStatus, getLoadingStatus } from '../../../redux-store/reducers/common-reducer/selectors'
-import { AuthorizationStatus, LoadingStatus, PAGE_ROUTES } from '../../../utils/objects'
-import { SVG_ICONS } from '../../../assets/images/svg-icons'
+import { AuthorizationStatus, PAGE_ROUTES } from '../../../utils/objects'
 import { checkFormInputsFullness } from '../../../utils/functions/check-form-inputs-fullness'
 import { setError, setErrorNull } from '../../../redux-store/reducers/common-reducer'
 import ErrorNotification from '../../molecules/error-notification'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { isStringOfLetters } from '../../../utils/functions/is-string-of-letters'
 import { checkPasswordStrength } from '../../../utils/functions/check-password-strength'
+import InputCommon from '../../molecules/input-common'
+import LabelCommon from '../../molecules/label-common'
+import FormTitle from '../../molecules/form-title'
+import ShowPasswordButton from '../../molecules/show-password-button'
+import SubmitButton from '../../molecules/submit-button'
+import FormLink from '../../molecules/form-link'
 
 const RegistrationForm = () => {
   const [email, setEmail] = useState('')
@@ -41,7 +46,7 @@ const RegistrationForm = () => {
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const areFieldsFull: boolean = checkFormInputsFullness(e.target as HTMLFormElement)
+    const areFieldsFull = checkFormInputsFullness(e.target as HTMLFormElement)
 
     if (!areFieldsFull) return dispatch(setError(['Заполните все поля']))
 
@@ -67,41 +72,41 @@ const RegistrationForm = () => {
     setIsPasswordStrong(checkPasswordStrength(value))
   }
 
+  const handleNameBlur = (value: string) => {
+    setIsNameCorrect(isStringOfLetters(value))
+  }
+
   return (
     <div className='LoginForm__Container'>
-      <form onSubmit={(e) => { handleFormSubmit(e) }} className='LoginForm'>
-        <h1 className='LoginForm__Title'>Регистрация</h1>
+      <form onSubmit={(e) => { handleFormSubmit(e) }} className='CommonForm'>
+        <FormTitle title='Регистрация' />
 
         {errors.length > 0 && <ErrorNotification errors={errors} />}
 
-        <label htmlFor="name">
-          <div className='LoginForm__NameLabel LoginForm__Label'>Имя</div>
-          <input className={!isNameCorrect ? 'errorInput' : ''} onBlur={(e) => setIsNameCorrect(isStringOfLetters(e.target.value))} type="text" id='name' name='name' placeholder='Введите имя' />
-        </label>
+        <LabelCommon htmlfor='name' label='Имя'>
+          <InputCommon correctnessFlag={isNameCorrect} name='name' onBlurHandler={handleNameBlur} onChangeHandler={() => false} placeholder='Введите имя' type='text' id='name' />
+        </LabelCommon>
 
-        <label htmlFor="login">
-          <div className='LoginForm__NameLabel LoginForm__Label'>Электронная почта</div>
-          <input className={!isEmailCorrect ? 'errorInput' : ''} onBlur={(e) => handleEmailValidation(e.target.value)} onChange={(e) => setEmail(e.target.value)} type="text" id='login' name='login' placeholder='Введите email' />
-        </label>
+        <LabelCommon htmlfor='login' label='Электронная почта'>
+          <InputCommon correctnessFlag={isEmailCorrect} name='login' onBlurHandler={handleEmailValidation} onChangeHandler={setEmail} placeholder='Введите email' type='text' id='login' />
+        </LabelCommon>
 
-        <label className='LoginForm__PasswordContainer' htmlFor="password">
-          <div className='LoginForm__PasswordLabel LoginForm__Label'>Пароль</div>
-          <input ref={passwordRef} className={!isPasswordStrong ? 'errorInput' : ''} onChange={(e) => handlePasswordChange(e.target.value)} type={isPasswordShown ? 'text' : 'password'} name='password' placeholder='Введите пароль' />
-          <div className='LoginForm__ShowPasswordButton' onClick={() => setIsPasswordShown(!isPasswordShown)}>{isPasswordShown ? SVG_ICONS.EYE_OPEN : SVG_ICONS.EYE_CLOSED}</div>
-        </label>
+        <LabelCommon customClass='CommonForm__PasswordContainer' htmlfor='password' label='Пароль'>
+          <InputCommon inputRef={passwordRef} correctnessFlag={isPasswordStrong} name='password' onBlurHandler={() => false} onChangeHandler={handlePasswordChange} placeholder='Введите пароль' type={isPasswordShown ? 'text' : 'password'} id='password1' />
+          <ShowPasswordButton isPasswordShown={isPasswordShown} onClickHandler={setIsPasswordShown} />
+        </LabelCommon>
 
-        <label className='LoginForm__PasswordContainer' htmlFor="password">
-          <div className='LoginForm__PasswordLabel LoginForm__Label'>Подтвердите пароль</div>
-          <input ref={passwordRefCopy} className={!isPasswordStrong ? 'errorInput' : ''} onChange={(e) => handlePasswordChange(e.target.value)} type={isPasswordShown ? 'text' : 'password'} name='password' placeholder='Повторите пароль' />
-          <div className='LoginForm__ShowPasswordButton' onClick={() => setIsPasswordShown(!isPasswordShown)}>{isPasswordShown ? SVG_ICONS.EYE_OPEN : SVG_ICONS.EYE_CLOSED}</div>
-        </label>
+        <LabelCommon customClass='CommonForm__PasswordContainer' htmlfor='password' label='Подтвердите пароль'>
+          <InputCommon inputRef={passwordRefCopy} correctnessFlag={isPasswordStrong} name='password' onBlurHandler={() => false} onChangeHandler={handlePasswordChange} placeholder='Введите пароль' type={isPasswordShown ? 'text' : 'password'} id='password2' />
+          <ShowPasswordButton isPasswordShown={isPasswordShown} onClickHandler={setIsPasswordShown} />
+        </LabelCommon>
 
-        <button disabled={isLoading === LoadingStatus.loading} className='LoginForm__SubmitButton'>{isLoading === LoadingStatus.loading ? 'Загрузка...' : 'Зарегистрироваться'}</button>
+        <SubmitButton isLoading={isLoading} name='Зарегистрироваться' />
       </form>
-      <div className='LoginForm__RegistrationLink'>Уже зарегистрированы? <Link onClick={() => dispatch(setErrorNull(null))} to={PAGE_ROUTES.LOGIN}>Войти</Link></div>
+      <FormLink addressWhereTo={PAGE_ROUTES.LOGIN} onClickHandler={() => dispatch(setErrorNull(null))} textWhatToDo='Войти' textWhy='Уже зарегистрированы?' />
     </div>
 
   )
 }
 
-export default RegistrationForm
+export default React.memo(RegistrationForm)

@@ -37,4 +37,4 @@ const MemberCard = ({ avatar, email, firstName, lastName, id }: IMemberCard) => 
   )
 }
 
-export default MemberCard
+export default React.memo(MemberCard)

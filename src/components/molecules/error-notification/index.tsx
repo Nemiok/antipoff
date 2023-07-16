@@ -17,4 +17,4 @@ const ErrorNotification = ({ errors }: IErrorNotification) => {
   )
 }
 
-export default ErrorNotification
+export default React.memo(ErrorNotification)

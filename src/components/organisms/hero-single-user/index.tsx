@@ -22,4 +22,4 @@ const HeroSingleUser = ({ firstName, lastName, avatar }: IHeroSingleUser) => {
   )
 }
 
-export default HeroSingleUser
+export default React.memo(HeroSingleUser)

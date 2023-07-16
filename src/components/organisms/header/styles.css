@@ -5,9 +5,3 @@ header {
   padding: 12px 18px;
   min-height: 64px;
 }
-
-.Header__Controls {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}

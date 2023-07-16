@@ -1,0 +1,23 @@
+.CommonInput {
+  padding: 12px 8px 12px 16px;
+  border-radius: 8px;
+  background-color: var(--background-color-3);
+  width: 100%;
+  color: var(--text-color-2);
+  font-size: 14px;
+}
+
+.CommonInput::placeholder {
+  color: var(--text-color-2);
+  font-size: 14px;
+}
+
+.CommonInput:focus-visible,
+.CommonInput:active {
+  outline: 1px solid var(--background-color-1);
+}
+
+
+.CommonInput_error {
+  outline: 1px solid var(--accent-color-1);
+}

@@ -6,6 +6,8 @@ interface IContentSingleUserProps {
   email: string
 }
 
+
+// компонент маленький, не имеет смысла декомпозировать его
 const ContentSingleUser = ({ email }: IContentSingleUserProps) => {
   return (
     <section className='ContentSingleUser__Container'>
@@ -28,4 +30,4 @@ const ContentSingleUser = ({ email }: IContentSingleUserProps) => {
   )
 }
 
-export default ContentSingleUser
+export default React.memo(ContentSingleUser)

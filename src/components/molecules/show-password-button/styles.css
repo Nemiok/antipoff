@@ -1,0 +1,7 @@
+.ShowPasswordButton {
+  position: relative;
+  width: max-content;
+  align-self: flex-end;
+  right: 10px;
+  bottom: 40px;
+}

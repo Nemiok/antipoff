@@ -1,0 +1,25 @@
+.FormLink {
+  display: flex;
+  font-family: 'Roboto';
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--text-color-2);
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.FormLink a {
+  color: var(--background-color-1);
+  transition: filter 0.1s ease-in-out;
+}
+
+.FormLink a:hover,
+.FormLink a:focus-visible {
+  filter: invert(1) contrast(130%);
+}
+
+.FormLink a:active {
+  filter: invert(0.9);
+}

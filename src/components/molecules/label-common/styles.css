@@ -1,0 +1,12 @@
+.LabelCommon {
+  font-family: 'Roboto';
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.CommonForm__PasswordContainer {
+  max-height: 78px;
+}

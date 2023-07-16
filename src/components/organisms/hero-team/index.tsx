@@ -13,4 +13,4 @@ const HeroTeam = () => {
   )
 }
 
-export default HeroTeam
+export default React.memo(HeroTeam)

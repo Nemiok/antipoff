@@ -22,4 +22,4 @@ const MemberCardList = ({ data }: IMemberCardList) => {
   )
 }
 
-export default MemberCardList
+export default React.memo(MemberCardList)
