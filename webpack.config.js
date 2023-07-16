@@ -1,6 +1,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 let config = {
@@ -78,6 +79,11 @@ let config = {
       filename: 'index.html',
       base: '/',
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: "./_redirects", to: "dist" },
+      ],
+    })
   ],
 
   optimization: {
