@@ -7,9 +7,9 @@ let config = {
   context: path.join(__dirname, 'src'), // Директория с исходным кодом приложения
   entry: 'main.tsx', // Главный файл приложения
   output: {
-    path: path.join(__dirname, 'build'), // Куда делать оброку
+    path: path.join(__dirname, 'dist'), // Куда делать оброку
     filename: '[name].js', // Шаблон для названия файлов
-    clean: true, // Очистить ./build перед сборкой
+    clean: true, // Очистить ./dist перед сборкой
   },
   mode: process.env.NODE_ENV,
   resolve: {
@@ -91,7 +91,7 @@ let config = {
 if (process.env.NODE_ENV === 'development') {
   config.devtool = 'inline-source-map';
   config.devServer = {
-    static: path.join(__dirname, 'build'),
+    static: path.join(__dirname, 'dist'),
     port: 8010,
     historyApiFallback: true,
   };
