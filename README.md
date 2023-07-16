@@ -7,6 +7,7 @@
    
 ## Деплой
 При входе и регистрации используйте данный email: `eve.holt@reqres.in`
+
 https://lucent-blancmange-2b0d41.netlify.app/
 
 ## Использованные технологии
